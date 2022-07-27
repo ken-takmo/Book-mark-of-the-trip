@@ -24,6 +24,7 @@
             <h3>旅行先：<?= $trip['destination'] ?></h3>
         </div>
         <hr>
+        <p>旅行テーマ：<?= $trip['theme'] ?></p>
         <p>感想：<?= $trip['content'] ?></p>
         <hr>
         <div>
