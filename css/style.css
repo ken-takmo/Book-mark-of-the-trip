@@ -20,6 +20,9 @@
   align-items: center;
   justify-content: center;
 }
+.trip-data-main > p {
+  text-align: center;
+}
 .trip-data-details {
   display: flex;
 }
@@ -36,5 +39,6 @@
 }
 .detail-trip {
   height: 50vh;
-  background-color: red;
+  background-color: #fffeecf5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

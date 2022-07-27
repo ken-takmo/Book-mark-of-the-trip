@@ -22,21 +22,43 @@
     <p><a href="/postForm.php">投稿</a></p>
     <p><a href="/search_form.html">検索</a></p>
     <div class="trip-datas">
+        <div class="trip-data">
+            <div class="trip-data-header">
+                <!-- <span class="material-symbols-outlined">
+                flight_takeoff
+                </span> -->
+                <p>旅行先</p>
+            </div>
+            <hr>
+            <div class="trip-data-main">
+                <p>旅行テーマ</p>
+            </div>
+            <hr>
+            <div class="trip-data-details">
+                <p class="detail">評価</p>
+                <p class="detail">同行者</p>
+                <p class="detail">地域</p>
+            </div>
+            <nav>
+            </nav>
+        </div>
         <?php foreach($trips as $trip): ?>
         <div class="trip-data">
             <div class="trip-data-header">
                 <!-- <span class="material-symbols-outlined">
                 flight_takeoff
                 </span> -->
-                <p>旅行先：<strong><?= $trip['destination'] ?></strong></p>
+                <p><strong><?= $trip['destination'] ?></strong></p>
             </div>
             <hr>
-            <p>旅行テーマ：<?= $trip['theme'] ?></p>
+            <div class="trip-data-main">
+                <p><?= $trip['theme'] ?></p>
+            </div>
             <hr>
             <div class="trip-data-details">
-                <p class="detail">評価：<?= $trip['evaluation'] ?></p>
-                <p class="detail">誰と：<?= Functions::setCompanion($trip['companion']) ?></p>
-                <p class="detail">地域：<?= $regions[$trip['region'] - 1] ?></p>
+                <p class="detail"><?= $trip['evaluation'] ?></p>
+                <p class="detail"><?= Functions::setCompanion($trip['companion']) ?></p>
+                <p class="detail"><?= $regions[$trip['region'] - 1] ?></p>
             </div>
             <nav>
                 <p class="link"><a href="/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>

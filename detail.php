@@ -17,7 +17,7 @@
     <title>詳細</title>
 </head>
 <body>
-    <h1>しおり一覧</h1>
+    <h1>しおり詳細</h1>
     <p><a href="/index.php">しおり一覧</a></p>
     <div class="detail-trip">
         <div>
