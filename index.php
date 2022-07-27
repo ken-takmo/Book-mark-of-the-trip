@@ -15,7 +15,7 @@
 </head>
 <body>
     <h1>しおり一覧</h1>
-    <p><a href="postForm.html">投稿</a></p>
+    <p><a href="/postForm.html">投稿</a></p>
     <div class="trip-datas">
         <?php foreach($trips as $trip): ?>
         <div class="trip-data">
@@ -27,8 +27,11 @@
             <hr>
             <div>
                 <p>評価：<?= $trip['evaluation'] ?></p>
-                <p>誰と：<?= $trip['companion'] ?></p>
+                <p>誰と：<?= Functions::setCompanion($trip['companion']) ?></p>
                 <p>旅行日：<?= $trip['tripDate'] ?></p>
+                <p><a href="/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>
+                <p><a href="/detail.php?id=<?= $trip['id'] ?>">詳細</a></p>
+                <p><a href="/trip_delete.php?id=<?= $trip['id'] ?>">削除</a></p>
             </div>
         </div>
         <?php endforeach; ?>
