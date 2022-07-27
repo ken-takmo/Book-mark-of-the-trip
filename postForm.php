@@ -18,6 +18,8 @@
     <form action="trip_create.php" method="POST">
       <p>旅行先</p>
       <input type="text" name="destination" />
+      <p>旅行テーマ</p>
+      <textarea name="theme" cols="30" rows="10"></textarea>
       <p>感想</p>
       <textarea name="content" cols="30" rows="10"></textarea>
       <p>評価(5段階評価)</p>
