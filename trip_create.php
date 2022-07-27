@@ -23,13 +23,16 @@
     if(empty($trips['tripDate'])){
         exit('旅行した日を選択してください');
     }
+    if(empty($trips['region'])){
+        exit('地域を選択してください');
+    }
 
     $dbh = Database::dbConnect();
     $dbh->beginTransaction();
     $sql = 'INSERT INTO 
-                trip_app(destination, content, evaluation, companion, tripDate)
+                trip_app(destination, content, evaluation, companion, tripDate, region)
             VALUES
-                (:destination, :content, :evaluation, :companion, :tripDate)';
+                (:destination, :content, :evaluation, :companion, :tripDate, :region)';
     try{
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':destination', $trips['destination'], PDO::PARAM_STR);
@@ -37,6 +40,7 @@
         $stmt->bindValue(':evaluation', $trips['evaluation'], PDO::PARAM_INT);
         $stmt->bindValue(':companion', $trips['companion'], PDO::PARAM_INT);
         $stmt->bindValue(':tripDate', $trips['tripDate'], PDO::PARAM_STR);
+        $stmt->bindValue(':region', $trips['region'], PDO::PARAM_INT);
         $stmt->execute();
         $dbh->commit();
         echo '投稿されました';

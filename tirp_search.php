@@ -1,8 +1,11 @@
 <?php
 
 require_once('functions.php');
+require_once('Utils.php');
+use Trip\Utils;
 use Trip\Functions;
 
+$regions = Utils::getRegions();
 $requirement = $_POST;
 
 $destination = $requirement['destination'];
@@ -36,6 +39,7 @@ $results = Functions::searchTrip($destination, $evaluation, $companion);
                 <p>評価：<?= $result['evaluation'] ?></p>
                 <p>誰と：<?= Functions::setCompanion($result['companion']) ?></p>
                 <p>旅行日：<?= $result['tripDate'] ?></p>
+                <p>地域：<?= $regions[$result['region'] - 1]?></p>
                 <p><a href="/update_form.php?id=<?= $result['id'] ?>">編集</a></p>
                 <p><a href="/detail.php?id=<?= $result['id'] ?>">詳細</a></p>
                 <p><a href="/trip_delete.php?id=<?= $result['id'] ?>">削除</a></p>

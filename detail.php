@@ -1,7 +1,10 @@
 <?php
     require_once('functions.php');
+    require_once('Utils.php');
+    use Trip\Utils;
     use Trip\Functions;
 
+    $regions = Utils::getRegions();
     $trip = Functions::getDetail($_GET["id"]);
 ?>
 <!DOCTYPE html>
@@ -27,6 +30,7 @@
             <p>評価：<?= $trip['evaluation'] ?></p>
             <p>誰と：<?= Functions::setCompanion($trip['companion']) ?></p>
             <p>旅行日：<?= $trip['tripDate'] ?></p>
+            <p>地域：<?= $regions[$trip['region'] -1] ?></p>
         </div>
     </div>
 </body>
