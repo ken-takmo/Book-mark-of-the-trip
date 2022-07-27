@@ -16,6 +16,7 @@
 <body>
     <h1>しおり一覧</h1>
     <p><a href="/postForm.html">投稿</a></p>
+    <p><a href="/search_form.html">検索</a></p>
     <div class="trip-datas">
         <?php foreach($trips as $trip): ?>
         <div class="trip-data">
