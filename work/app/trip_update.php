@@ -45,7 +45,7 @@
     try{
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':destination', $trip['destination'], \PDO::PARAM_STR);
-        $stmt->bindValue(':theme', $trips['theme'], PDO::PARAM_STR);
+        $stmt->bindValue(':theme', $trip['theme'], PDO::PARAM_STR);
         $stmt->bindValue(':content', $trip['content'], \PDO::PARAM_STR);
         $stmt->bindValue(':evaluation', $trip['evaluation'], \PDO::PARAM_INT);
         $stmt->bindValue(':companion', $trip['companion'], \PDO::PARAM_INT);

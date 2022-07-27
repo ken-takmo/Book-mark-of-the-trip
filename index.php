@@ -1,9 +1,8 @@
 <?php
-    require_once('functions.php');
-    require_once('Utils.php');
+    require_once('./work/app/functions.php');
+    require_once('./work/app/Utils.php');
     use Trip\Functions;
     use Trip\Utils;
-
     $trips = Functions::getAll();
     $regions = Utils::getRegions();
 ?>
@@ -19,8 +18,8 @@
 </head>
 <body>
     <h1>しおり一覧</h1>
-    <p><a href="/postForm.php">投稿</a></p>
-    <p><a href="/search_form.html">検索</a></p>
+    <p><a href="work/public/postForm.php">投稿</a></p>
+    <p><a href="work/public/search_form.html">検索</a></p>
     <div class="trip-datas">
         <div class="trip-data">
             <div class="trip-data-header">
@@ -61,9 +60,9 @@
                 <p class="detail"><?= $regions[$trip['region'] - 1] ?></p>
             </div>
             <nav>
-                <p class="link"><a href="/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>
-                <p class="link"><a href="/detail.php?id=<?= $trip['id'] ?>">詳細</a></p>
-                <p class="link"><a href="/trip_delete.php?id=<?= $trip['id'] ?>">削除</a></p>
+                <p class="link"><a href="/work/public/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>
+                <p class="link"><a href="/work/public/detail.php?id=<?= $trip['id'] ?>">詳細</a></p>
+                <p class="link"><a href="/work/app/trip_delete.php?id=<?= $trip['id'] ?>">削除</a></p>
             </nav>
         </div>
         <?php endforeach; ?>
