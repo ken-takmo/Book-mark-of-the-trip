@@ -28,11 +28,9 @@
                 </span> -->
                 <p>旅行先</p>
             </div>
-            <hr>
             <div class="trip-data-main">
                 <p>旅行テーマ</p>
             </div>
-            <hr>
             <div class="trip-data-details">
                 <p class="detail">評価</p>
                 <p class="detail">同行者</p>
@@ -49,11 +47,9 @@
                 </span> -->
                 <p><strong><?= $trip['destination'] ?></strong></p>
             </div>
-            <hr>
             <div class="trip-data-main">
                 <p><?= $trip['theme'] ?></p>
             </div>
-            <hr>
             <div class="trip-data-details">
                 <p class="detail"><?= $trip['evaluation'] ?></p>
                 <p class="detail"><?= Functions::setCompanion($trip['companion']) ?></p>
