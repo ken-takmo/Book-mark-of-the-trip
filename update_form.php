@@ -1,6 +1,11 @@
 <?php
     require_once('functions.php');
+    require_once('Utils.php');
+
+    use Trip\Utils;
     use Trip\Functions;
+
+    $regions = Utils::getRegions();
 
     $trip = Functions::getDetail($_GET['id']);
     $id = $trip['id'];
@@ -9,6 +14,7 @@
     $evaluation = $trip['evaluation'];
     $companion = $trip['companion'];
     $tripData = $trip['tripDate'];
+    $region = $trip['region'];
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -44,6 +50,12 @@
       </select>
       <p>旅行日</p>
       <input name="tripDate" type="date" value="<?= $tripData ?>"/>
+      <p>地域</p>
+      <select name="region">
+        <?php for($i = 0; $i <= 46; $i++): ?>
+            <option value="<?= $i + 1 ?>" <?php if((int)$region === $i + 1) echo "selected" ?>><?= $regions[$i] ?></option>
+          <?php endfor; ?>
+        </select>
       <br />
       <input type="submit" value="更新" />
     </form>

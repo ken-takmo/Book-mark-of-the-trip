@@ -1,3 +1,9 @@
+<?php
+  require_once('Utils.php');
+  use Trip\Utils;
+
+  $regions = Utils::getRegions();
+?>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -31,6 +37,13 @@
       </select>
       <p>旅行日</p>
       <input name="tripDate" type="date" />
+      <p>地域</p>
+      <select name="region">
+        <?php for($i = 0; $i <= 46; $i++): ?>
+          <option value="<?= $i + 1 ?>"><?= $regions[$i] ?></option>
+        <?php endfor; ?>
+      </select>
+      <br />
       <br />
       <input type="submit" value="投稿" />
     </form>
