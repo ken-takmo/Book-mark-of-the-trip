@@ -22,11 +22,20 @@
     if(empty($trip['tripDate'])){
         exit('旅行日を選択してください');
     }
+    if(empty($trip['region'])){
+        exit('地域を選択してください');
+    }
 
     $dbh = Database::dbConnect();
     $dbh->beginTransaction();
     $sql = 'UPDATE  
-                trip_app SET destination = :destination, content = :content, evaluation = :evaluation, companion = :companion, tripDate = :tripDate
+                trip_app SET 
+                destination = :destination, 
+                content = :content, 
+                evaluation = :evaluation, 
+                companion = :companion, 
+                tripDate = :tripDate,
+                region = :region
             WHERE 
                 id = :id';
     try{
@@ -36,6 +45,7 @@
         $stmt->bindValue(':evaluation', $trip['evaluation'], \PDO::PARAM_INT);
         $stmt->bindValue(':companion', $trip['companion'], \PDO::PARAM_INT);
         $stmt->bindValue(':tripDate', $trip['tripDate'], \PDO::PARAM_STR);
+        $stmt->bindValue(':region', $trip['region'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $trip['id'], \PDO::PARAM_INT);
         $stmt->execute();
         $dbh->commit();
