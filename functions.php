@@ -49,6 +49,22 @@
             }
         }
 
+        public static function searchTrip($destination, $evaluation, $companion) {
+            $dbh = Database::dbConnect();
+            $sql = 'SELECT * FROM trip_app WHERE destination = :destination AND evaluation = :evaluation AND companion = :companion';
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindValue(':destination', $destination, \PDO::PARAM_STR);
+            $stmt->bindValue(':evaluation', $evaluation, \PDO::PARAM_INT);
+            $stmt->bindValue(':companion', $companion, \PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+            if(!$result) {
+                echo '条件に当てはまる投稿がありません';
+            }
+            return $result;
+        }
+
         public static function setCompanion($int){
             switch($int){
                 case 1:
