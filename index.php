@@ -31,12 +31,11 @@
                 <p>旅行先：<strong><?= $trip['destination'] ?></strong></p>
             </div>
             <hr>
-            <p>感想：<?= $trip['content'] ?></p>
+            <p>旅行テーマ：<?= $trip['theme'] ?></p>
             <hr>
             <div class="trip-data-details">
                 <p class="detail">評価：<?= $trip['evaluation'] ?></p>
                 <p class="detail">誰と：<?= Functions::setCompanion($trip['companion']) ?></p>
-                <p class="detail">旅行日：<?= $trip['tripDate'] ?></p>
                 <p class="detail">地域：<?= $regions[$trip['region'] - 1] ?></p>
             </div>
             <nav>

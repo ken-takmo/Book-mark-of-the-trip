@@ -15,7 +15,7 @@ $companion = $requirement['companion'];
 $results = Functions::searchTrip($destination, $evaluation, $companion);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,6 +33,7 @@ $results = Functions::searchTrip($destination, $evaluation, $companion);
                 <h3>旅行先：<?= $result['destination'] ?></h3>
             </div>
             <hr>
+            <p>旅行テーマ:<?= $result['theme'] ?></p>
             <p>感想：<?= $result['content'] ?></p>
             <hr>
             <div>

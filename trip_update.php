@@ -10,6 +10,9 @@
     }else if(mb_strlen($trip['destination']) > 100){
         exit('旅行先は191文字以内にしてください');
     }
+    if(empty($trip['theme'])){
+        exit('旅行のテーマを入力してください');
+    }
     if(empty($trip['content'])){
         exit('感想を入力してください');
     }
@@ -31,6 +34,7 @@
     $sql = 'UPDATE  
                 trip_app SET 
                 destination = :destination, 
+                theme = :theme,
                 content = :content, 
                 evaluation = :evaluation, 
                 companion = :companion, 
@@ -41,6 +45,7 @@
     try{
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':destination', $trip['destination'], \PDO::PARAM_STR);
+        $stmt->bindValue(':theme', $trips['theme'], PDO::PARAM_STR);
         $stmt->bindValue(':content', $trip['content'], \PDO::PARAM_STR);
         $stmt->bindValue(':evaluation', $trip['evaluation'], \PDO::PARAM_INT);
         $stmt->bindValue(':companion', $trip['companion'], \PDO::PARAM_INT);

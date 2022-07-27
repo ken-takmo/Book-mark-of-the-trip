@@ -10,6 +10,7 @@
     $trip = Functions::getDetail($_GET['id']);
     $id = $trip['id'];
     $destination = $trip['destination'];
+    $theme = $trip['theme'];
     $content = $trip['content'];
     $evaluation = $trip['evaluation'];
     $companion = $trip['companion'];
@@ -31,6 +32,8 @@
         <input type="hidden" name="id" value="<?= $id ?>">
       <p>旅行先</p>
       <input type="text" name="destination" value="<?= $destination ?>"/>
+      <p>旅行テーマ</p>
+      <textarea name="theme" cols="30" rows="10"><?= $theme ?></textarea>
       <p>感想</p>
       <textarea name="content" cols="30" rows="10" ><?= $content ?></textarea>
       <p>評価(5段階評価)</p>

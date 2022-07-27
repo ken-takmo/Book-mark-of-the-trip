@@ -11,6 +11,9 @@
     }else if(mb_strlen($trips['destination']) > 100){
         exit('旅行先は100文字以内にしてください');
     }
+    if(empty($trips['theme'])){
+        exit('旅行のテーマを入力してください');
+    }
     if(empty($trips['content'])){
         exit('感想を入力してください');
     }
@@ -30,12 +33,13 @@
     $dbh = Database::dbConnect();
     $dbh->beginTransaction();
     $sql = 'INSERT INTO 
-                trip_app(destination, content, evaluation, companion, tripDate, region)
+                trip_app(destination, theme, content, evaluation, companion, tripDate, region)
             VALUES
-                (:destination, :content, :evaluation, :companion, :tripDate, :region)';
+                (:destination, :theme, :content, :evaluation, :companion, :tripDate, :region)';
     try{
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':destination', $trips['destination'], PDO::PARAM_STR);
+        $stmt->bindValue(':theme', $trips['theme'], PDO::PARAM_STR);
         $stmt->bindValue(':content', $trips['content'], PDO::PARAM_STR);
         $stmt->bindValue(':evaluation', $trips['evaluation'], PDO::PARAM_INT);
         $stmt->bindValue(':companion', $trips['companion'], PDO::PARAM_INT);
