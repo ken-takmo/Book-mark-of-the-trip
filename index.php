@@ -52,10 +52,6 @@
                 <p class="detail"><?= Functions::setCompanion($trip['companion']) ?></p>
                 <p class="detail"><?= $regions[$trip['region'] - 1] ?></p>
             </div>
-            <nav >
-                <p class="link"><a href="/work/public/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>
-                <p class="link"><a href="/work/app/trip_delete.php?id=<?= $trip['id'] ?>">削除</a></p>
-            </nav>
         </div>
         <?php endforeach; ?>
         <p><a href="/work/public/sample.html">サンプル</a></p>
