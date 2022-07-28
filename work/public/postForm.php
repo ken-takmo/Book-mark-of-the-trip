@@ -1,5 +1,5 @@
 <?php
-  require_once('Utils.php');
+  require_once('../app/Utils.php');
   use Trip\Utils;
 
   $regions = Utils::getRegions();
@@ -10,12 +10,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css">
     <title>しおり作成</title>
   </head>
   <body>
     <h1>投稿フォーム</h1>
-    <p><a href="/index.php">しおり一覧</a></p>
-    <form action="trip_create.php" method="POST">
+    <p><a href="../../index.php">しおり一覧</a></p>
+    <form action="../app/trip_create.php" method="POST">
       <p>旅行先</p>
       <input type="text" name="destination" />
       <p>旅行テーマ</p>
