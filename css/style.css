@@ -53,10 +53,6 @@ header nav {
   opacity: 0.5;
 }
 
-.trip-data a {
-  color: rgb(188, 142, 142);
-}
-
 .trip-data-header {
   display: flex;
   align-items: center;
@@ -103,6 +99,9 @@ header nav {
   height: 50vh;
   background-color: #fffeecf5;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.detail-trip a {
+  color: rgb(188, 142, 142);
 }
 /* サンプル */
 .sample1 {
