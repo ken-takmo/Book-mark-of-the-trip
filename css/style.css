@@ -6,7 +6,33 @@ p {
 a {
   color: #fff;
 }
+h1 {
+  text-align: center;
+}
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.selecter {
+  display: flex;
+}
+form > * {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+input[type="text"],
+textarea {
+  text-align: left;
+}
+
+input[type="submit"] {
+  width: 100px;
+  margin: 0 auto 30px;
+}
 header {
   background-color: pink;
   height: 20vh;
