@@ -17,12 +17,11 @@
     <title>旅行のしおり</title>
 </head>
 <body>
+    <?php include("./work/app/header.php"); ?>
     <h1>しおり一覧</h1>
-    <p><a href="work/public/postForm.php">投稿</a></p>
-    <p><a href="work/public/search_form.html">検索</a></p>
     <div class="trip-datas">
         <div class="trip-data">
-            <div class="trip-data-header">
+            <div class="trip-data-header" >
                 <!-- <span class="material-symbols-outlined">
                 flight_takeoff
                 </span> -->
@@ -36,32 +35,35 @@
                 <p class="detail">同行者</p>
                 <p class="detail">地域</p>
             </div>
-            <nav>
-            </nav>
         </div>
         <?php foreach($trips as $trip): ?>
-        <div class="trip-data">
-            <div class="trip-data-header">
+        <div class="trip-data" data-id="<?= $trip['id'] ?>" onclick="toDetail(<?= $trip['id'] ?>)">
+            <div class="trip-data-header trip-data-child" >
                 <!-- <span class="material-symbols-outlined">
                 flight_takeoff
                 </span> -->
                 <p><strong><?= $trip['destination'] ?></strong></p>
             </div>
-            <div class="trip-data-main">
+            <div class="trip-data-main  trip-data-child" >
                 <p><?= $trip['theme'] ?></p>
             </div>
-            <div class="trip-data-details">
+            <div class="trip-data-details  trip-data-child" >
                 <p class="detail"><?= $trip['evaluation'] ?></p>
                 <p class="detail"><?= Functions::setCompanion($trip['companion']) ?></p>
                 <p class="detail"><?= $regions[$trip['region'] - 1] ?></p>
             </div>
-            <nav>
+            <nav >
                 <p class="link"><a href="/work/public/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>
-                <p class="link"><a href="/work/public/detail.php?id=<?= $trip['id'] ?>">詳細</a></p>
                 <p class="link"><a href="/work/app/trip_delete.php?id=<?= $trip['id'] ?>">削除</a></p>
             </nav>
         </div>
         <?php endforeach; ?>
+        <p><a href="/work/public/sample.html">サンプル</a></p>
     </div>
+    <script>
+        const toDetail = (id) => {
+            location.href = `/work/public/detail.php?id=${id}`;
+        };
+    </script>
 </body>
 </html>
