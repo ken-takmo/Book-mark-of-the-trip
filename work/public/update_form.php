@@ -27,8 +27,8 @@
     <title>しおり編集</title>
   </head>
   <body>
+    <?php include("../app/header.php"); ?>
     <h1>しおり編集</h1>
-    <p><a href="../../index.php">しおり一覧</a></p>
     <form action="../app/trip_update.php" method="POST">
         <input type="hidden" name="id" value="<?= $id ?>">
       <p>旅行先</p>

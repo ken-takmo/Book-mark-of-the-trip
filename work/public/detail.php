@@ -17,8 +17,8 @@
     <title>詳細</title>
 </head>
 <body>
+    <?php include("../app/header.php"); ?>
     <h1>しおり詳細</h1>
-    <p><a href="../../index.php">しおり一覧</a></p>
     <div class="detail-trip">
         <div>
             <h3>旅行先：<?= $trip['destination'] ?></h3>

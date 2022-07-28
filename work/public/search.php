@@ -24,9 +24,9 @@ $results = Functions::searchTrip($destination, $evaluation, $companion);
     <title>検索結果</title>
 </head>
 <body>
+    <?php include("../app/header.php"); ?>
     <H1>検索結果</H1>
     <p><?= $destination . " " . $evaluation . " "  . Functions::setCompanion($companion) ?> で検索</p>
-    <p><a href="../../index.php">しおり一覧</a></p>
     <hr>
     <div class="trip-datas">
         <?php foreach($results as $result): ?>

@@ -14,8 +14,8 @@
     <title>しおり作成</title>
   </head>
   <body>
+    <?php include("../app/header.php"); ?>
     <h1>投稿フォーム</h1>
-    <p><a href="../../index.php">しおり一覧</a></p>
     <form action="../app/trip_create.php" method="POST">
       <p>旅行先</p>
       <input type="text" name="destination" />
