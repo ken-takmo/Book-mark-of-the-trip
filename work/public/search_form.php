@@ -8,8 +8,8 @@
     <title>検索フォーム</title>
   </head>
   <body>
+    <?php include("../app/header.php"); ?>
     <h1>検索フォーム</h1>
-    <p><a href="../../index.php">しおり一覧</a></p>
     <form action="./search.php" method="POST">
       <p>場所</p>
       <input type="text" name="destination" />
