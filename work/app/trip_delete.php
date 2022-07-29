@@ -6,4 +6,4 @@
     
 ?>
 <br>
-<a href="/">戻る</a>
+<a href="../public/list.php">戻る</a>
