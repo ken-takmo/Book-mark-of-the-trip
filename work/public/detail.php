@@ -5,6 +5,12 @@
     use Trip\Functions;
 
     $regions = Utils::getRegions();
+    if(empty($_GET["id"])){
+        echo("Idが不正です");
+        // http_response_code(400);
+        // header("Location:/");
+        exit();
+    }
     $trip = Functions::getDetail($_GET["id"]);
 ?>
 <!DOCTYPE html>

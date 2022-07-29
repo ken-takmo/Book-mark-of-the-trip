@@ -53,4 +53,4 @@
         exit($e);
     }
 ?>
-<p><a href="/">戻る</a></p>
+<p><a href="../public/list.php">戻る</a></p>
