@@ -17,6 +17,7 @@
         public static function getDetail($id) {
             if(empty($id)) {
                 echo "IDが不正です";
+                exit();
             }
             $dbh = Database::dbConnect();
             $stmt = $dbh->prepare("SELECT * FROM trip_app WHERE id = :id");
@@ -26,6 +27,7 @@
 
             if(!$result){
                 echo "その投稿はありません";
+                exit();
             }
             return $result;
         }

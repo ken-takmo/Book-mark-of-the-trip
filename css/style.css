@@ -20,6 +20,10 @@ form {
   justify-content: center;
 }
 
+label {
+  color: rgb(104, 104, 104);
+}
+
 .selecter > label:not(:first-child) {
   margin: 0 10px 0 20px;
 }
@@ -39,19 +43,65 @@ form > * {
 }
 
 input[type="text"] {
-  width: 500px;
-  margin: auto;
+  width: 80%;
 }
 
 input[type="text"],
 textarea {
   text-align: left;
+  border-radius: 10px;
+  margin: auto;
+}
+
+textarea {
+  width: 80%;
 }
 
 input[type="submit"] {
   width: 100px;
   margin: 0 auto 30px;
+  border-radius: 30px;
+  cursor: pointer;
 }
+/* home */
+.home {
+  display: flex;
+  justify-content: center;
+}
+.image-links {
+  width: 700px;
+  display: flex;
+  justify-content: space-around;
+}
+.post-link,
+.list-link {
+  position: relative;
+  cursor: pointer;
+}
+.list-link img,
+.post-link img {
+  width: 300px;
+  height: 300px;
+  transition: opacity 1s;
+}
+
+.list-link img:hover,
+.post-link img:hover {
+  opacity: 0.2;
+}
+
+.list-link p,
+.post-link p {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* header */
 header {
   background-color: pink;
   height: 100px;
@@ -107,6 +157,7 @@ header p:hover {
   border-radius: 30px 0 0 0;
   cursor: pointer;
   transition: opacity 1s;
+  min-height: 150px;
 }
 
 .trip-data:hover {
@@ -121,6 +172,7 @@ header p:hover {
   border-radius: 10px;
   width: 80%;
   margin: 10px auto;
+  min-height: 50px;
 }
 
 .trip-data-main {
@@ -128,10 +180,11 @@ header p:hover {
   border-radius: 10px 10px 0 0;
   width: 95%;
   margin: 0 auto;
+  min-height: 50px;
 }
 .trip-data-details {
   background-color: #fff;
-  min-height: 80%;
+  min-height: 50px;
   display: flex;
   align-content: center;
   margin: 0 auto;
@@ -155,6 +208,8 @@ header p:hover {
   flex: 1;
   text-align: center;
 }
+
+/* detail */
 
 .detail h1,
 .detail p,
@@ -194,6 +249,21 @@ header p:hover {
 .detail-data-links {
   flex: 1;
   display: flex;
+}
+
+/* postForm */
+.post-form {
+  background-color: green;
+}
+
+/* searchForm */
+.search-form {
+  background-color: pink;
+}
+
+/* updateForm */
+.update-form {
+  background-color: yellow;
 }
 /* サンプル */
 .sample1 {
