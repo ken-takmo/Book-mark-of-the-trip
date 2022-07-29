@@ -1,8 +1,19 @@
 <header>
     <h1>みんなのしおり</h1>
     <nav>
-        <p><a href="/work/public/search_form.php">検索</a></p>
-        <p><a href="/work/public/postForm.php">投稿</a></p>
-        <p><a href="/">しおり一覧</a></p>
+        <p onclick="toSearch()">検索</p>
+        <p onclick="toPostForm()">投稿</a></p>
+        <p onclick="toHome()">しおり一覧</p>
     </nav>
+    <script>
+        const toSearch = () => {
+            location.href = "/work/public/search_form.php";
+        }
+        const toPostForm = () => {
+            location.href = "/work/public/postForm.php";
+        }
+        const toHome = () => {
+            location.href = "/";
+        }
+    </script>
 </header>
