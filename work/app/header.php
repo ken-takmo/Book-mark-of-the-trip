@@ -2,7 +2,7 @@
     <h1>みんなのしおり</h1>
     <nav>
         <p onclick="toSearch()">検索</p>
-        <p onclick="toPostForm()">投稿</a></p>
+        <p onclick="toPostForm()">投稿</p>
         <p onclick="toList()">しおり一覧</p>
         <p onclick="toHome()">ホーム</p>
     </nav>
