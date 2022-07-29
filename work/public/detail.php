@@ -18,25 +18,29 @@
 </head>
 <body>
     <?php include("../app/header.php"); ?>
-    <h1>しおり詳細</h1>
-    <div class="detail-trip">
-        <div>
-            <h3>旅行先：<?= $trip['destination'] ?></h3>
+    <main class="detail">
+        <h1>しおり詳細</h1>
+        <div class="detail-data">
+            <div class="detail-data-header">
+                <h3><?= $trip['destination'] ?></h3>
+            </div>
+            <hr>
+            <div class="detail-data-main">
+                <p class="detail-theme">旅行テーマ：<?= $trip['theme'] ?></p>
+                <p class="detail-content">感想：<?= $trip['content'] ?></p>
+            </div>
+            <hr>
+            <div class="detail-data-detail">
+                <p>評価：<?= $trip['evaluation'] ?></p>
+                <p>誰と：<?= Functions::setCompanion($trip['companion']) ?></p>
+                <p>旅行日：<?= $trip['tripDate'] ?></p>
+                <p>地域：<?= $regions[$trip['region'] -1] ?></p>
+            </div>
+            <nav class="detail-data-links">
+                <p class="link"><a href="/work/public/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>
+                <p class="link"><a href="/work/app/trip_delete.php?id=<?= $trip['id'] ?>">削除</a></p>
+            </nav>
         </div>
-        <hr>
-        <p>旅行テーマ：<?= $trip['theme'] ?></p>
-        <p>感想：<?= $trip['content'] ?></p>
-        <hr>
-        <div>
-            <p>評価：<?= $trip['evaluation'] ?></p>
-            <p>誰と：<?= Functions::setCompanion($trip['companion']) ?></p>
-            <p>旅行日：<?= $trip['tripDate'] ?></p>
-            <p>地域：<?= $regions[$trip['region'] -1] ?></p>
-        </div>
-        <nav>
-            <p class="link"><a href="/work/public/update_form.php?id=<?= $trip['id'] ?>">編集</a></p>
-            <p class="link"><a href="/work/app/trip_delete.php?id=<?= $trip['id'] ?>">削除</a></p>
-        </nav>
-    </div>
+    </main>
 </body>
 </html>

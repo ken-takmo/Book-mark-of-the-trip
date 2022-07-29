@@ -13,6 +13,7 @@
     <form action="./search.php" method="POST">
       <label for="destination">旅行先</label>
       <input type="text" name="destination" id="destination"/>
+      <br>
       <div class="selecter">
         <label for="evaluation">評価</label>
         <select name="evaluation" id="evaluation">

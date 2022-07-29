@@ -18,11 +18,14 @@
     <h1>投稿フォーム</h1>
     <form action="../app/trip_create.php" method="POST">
       <label for="destination">旅行先</label>
-      <input type="text" name="destination" id="destination"/>
+      <input type="text" name="destination" id="destination" placeholder="例：梅田"/>
+      <br>
       <label for="theme">旅行テーマ</label>
-      <textarea name="theme" id="theme" cols="30" rows="10"></textarea>
+      <textarea name="theme" id="theme" cols="30" rows="10" placeholder="例：たこ焼き食べくらべ旅"></textarea>
+      <br>
       <label for="content">感想</label>
-      <textarea name="content" id="content" cols="30" rows="10"></textarea>
+      <textarea name="content" id="content" cols="30" rows="10" placeholder="例：関東とはちがう中も外もフワッとした生地のたこ焼きで、だしにつけたりさまざまな味が楽しめた。"></textarea>
+      <br>
       <div class="selecter">
         <label for="evaluation">評価</label>
         <select name="evaluation" id="evaluation">
