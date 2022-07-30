@@ -58,24 +58,6 @@
             </div>
         </div>
         <?php endforeach; ?>
-        <!-- <div class="sample">
-            <div class="left-side">
-                <div class="top">
-                    <p>楽しいシティーボーイ体験</p>
-                </div>
-                <div class="bottum">
-                    <p>渋谷</p>
-                </div>
-            </div>
-            <div class="right-side">
-                <small>評価</small>
-                <p>5</p>
-                <small>誰と</small>
-                <p>ひとり</p>
-                <small>地域</small>
-                <p>東京</p>
-            </div>
-        </div> -->
     </div>
     </main>
     <?php include("../app/footer.html"); ?>
