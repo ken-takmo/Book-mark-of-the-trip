@@ -57,5 +57,6 @@
         <input type="submit" value="投稿" />
       </form>
     </main>
+    <?php include("../app/footer.html"); ?>
   </body>
 </html>
