@@ -339,3 +339,15 @@ footer {
   color: #fff;
 }
 /* サンプル */
+.sample {
+  display: grid;
+  height: 100vh;
+}
+.s2 {
+  background-color: blue;
+  grid-column: 1/13;
+}
+.s3 {
+  background-color: green;
+  grid-column: 13/16;
+}
