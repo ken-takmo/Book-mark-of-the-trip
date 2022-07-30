@@ -20,7 +20,7 @@
     <main>
     <h1>しおり一覧</h1>
     <div class="trip-datas">
-        <div class="trip-data">
+        <!-- <div class="trip-data">
             <div class="trip-data-main">
                 <div class="trip-theme" >
                     <p>旅行テーマ</p>
@@ -37,7 +37,7 @@
                 <small>地域</small>
                 <p>東京</p>
             </div>
-        </div>
+        </div> -->
         <?php foreach($trips as $trip): ?>
         <div class="trip-data" data-id="<?= $trip['id'] ?>" onclick="toDetail(<?= $trip['id'] ?>)">
             <div class="trip-data-main">
