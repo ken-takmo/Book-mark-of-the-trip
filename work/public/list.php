@@ -13,48 +13,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>旅行のしおり</title>
 </head>
 <body>
     <?php include("../app/header.php"); ?>
+    <main>
     <h1>しおり一覧</h1>
     <div class="trip-datas">
         <div class="trip-data">
-            <div class="trip-data-header" >
-                <!-- <span class="material-symbols-outlined">
-                flight_takeoff
-                </span> -->
-                <p>旅行先</p>
-            </div>
             <div class="trip-data-main">
-                <p>旅行テーマ</p>
+                <div class="trip-theme" >
+                    <p>旅行テーマ</p>
+                </div>
+                <div class="trip-destination">
+                    <p>旅行先</p>
+                </div>
             </div>
-            <div class="trip-data-details">
-                <p class="detail">評価</p>
-                <p class="detail">誰と</p>
-                <p class="detail">地域</p>
+            <div class="trip-details">
+                <small>評価</small>
+                <p>5</p>
+                <small>誰と</small>
+                <p>ひとり</p>
+                <small>地域</small>
+                <p>東京</p>
             </div>
         </div>
         <?php foreach($trips as $trip): ?>
         <div class="trip-data" data-id="<?= $trip['id'] ?>" onclick="toDetail(<?= $trip['id'] ?>)">
-            <div class="trip-data-header trip-data-child" >
-                <!-- <span class="material-symbols-outlined">
-                flight_takeoff
-                </span> -->
-                <p><strong><?= $trip['destination'] ?></strong></p>
-            </div>
-            <div class="trip-data-main  trip-data-child" >
-                <p><?= $trip['theme'] ?></p>
-            </div>
-            <div class="trip-data-details  trip-data-child" >
+            <div class="trip-data-main">
+                <div class="trip-theme trip-data-child" >
+                    <p><?= $trip['theme'] ?></p>
+                </div>
+                <div class="trip-destination trip-data-child" >
+                    <p><?= $trip['destination'] ?></p>
+                </div>
+            </div>    
+            <div class="trip-details  trip-data-child" >
+                <small>評価</small>
                 <p class="detail"><?= $trip['evaluation'] ?></p>
+                <small>誰と</small>
                 <p class="detail"><?= Functions::setCompanion($trip['companion']) ?></p>
+                <small>地域</small>
                 <p class="detail"><?= $regions[$trip['region'] - 1] ?></p>
             </div>
         </div>
         <?php endforeach; ?>
+        <!-- <div class="sample">
+            <div class="left-side">
+                <div class="top">
+                    <p>楽しいシティーボーイ体験</p>
+                </div>
+                <div class="bottum">
+                    <p>渋谷</p>
+                </div>
+            </div>
+            <div class="right-side">
+                <small>評価</small>
+                <p>5</p>
+                <small>誰と</small>
+                <p>ひとり</p>
+                <small>地域</small>
+                <p>東京</p>
+            </div>
+        </div> -->
     </div>
+    </main>
+    <?php include("../app/footer.html"); ?>
     <script>
         const toDetail = (id) => {
             location.href = `./detail.php?id=${id}`;
