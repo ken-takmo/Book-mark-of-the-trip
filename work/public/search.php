@@ -8,11 +8,13 @@ use Trip\Functions;
 $regions = Utils::getRegions();
 $requirement = $_POST;
 
-$destination = $requirement['destination'];
+$destination = '%' . $requirement['destination'] . '%';
 $evaluation = $requirement['evaluation'];
 $companion = $requirement['companion'];
+$tripDate = $requirement['tripDate'];
+$region = $requirement['region'];
 
-$results = Functions::searchTrip($destination, $evaluation, $companion);
+$results = Functions::searchTrip($destination, $evaluation, $companion,);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -26,29 +28,38 @@ $results = Functions::searchTrip($destination, $evaluation, $companion);
 <body>
     <?php include("../app/header.php"); ?>
     <H1>検索結果</H1>
-    <p><?= $destination . " " . $evaluation . " "  . Functions::setCompanion($companion) ?> で検索</p>
+    <p><?= str_replace('%', '', $destination) . " " . $evaluation . " "  . Functions::setCompanion($companion) ?> で検索</p>
     <hr>
-    <div class="trip-datas">
-        <?php foreach($results as $result): ?>
-        <div class="trip-data">
-            <div>
-                <h3>旅行先：<?= $result['destination'] ?></h3>
+    <main>
+
+        <div class="trip-datas">
+            <?php foreach($results as $result): ?>
+            <div class="trip-data">
+                <div class="trip-data-main">
+                    <div class="trip-theme">
+                        <p><?= $result['theme'] ?></p>
+                    </div>
+                    <div class="trip-destination">
+                        <p><?= $result['destination'] ?></h3>
+                    </div>
+                </div>
+                <div class="trip-details">
+                    <small>評価</small>
+                    <p class="detail"><?= $result['evaluation'] ?></p>
+                    <small>誰と</small>
+                    <p class="detail"><?= Functions::setCompanion($result['companion']) ?></p>
+                    <small>地域</small>
+                    <p class="detail"><?= $regions[$result['region'] - 1] ?></p>
+                </div>
             </div>
-            <hr>
-            <p>旅行テーマ:<?= $result['theme'] ?></p>
-            <p>感想：<?= $result['content'] ?></p>
-            <hr>
-            <div>
-                <p>評価：<?= $result['evaluation'] ?></p>
-                <p>誰と：<?= Functions::setCompanion($result['companion']) ?></p>
-                <p>旅行日：<?= $result['tripDate'] ?></p>
-                <p>地域：<?= $regions[$result['region'] - 1]?></p>
-                <p><a href="./update_form.php?id=<?= $result['id'] ?>">編集</a></p>
-                <p><a href="./detail.php?id=<?= $result['id'] ?>">詳細</a></p>
-                <p><a href="../app/trip_delete.php?id=<?= $result['id'] ?>">削除</a></p>
-            </div>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
-    </div>
+        <?php include("../app/footer.html"); ?>
+    </main>
+    <script>
+        const toDetail = (id) => {
+            location.href = `./detail.php?id=${id}`;
+        };
+    </script>
 </body>
 </html>

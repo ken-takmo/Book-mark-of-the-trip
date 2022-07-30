@@ -53,7 +53,7 @@
 
         public static function searchTrip($destination, $evaluation, $companion) {
             $dbh = Database::dbConnect();
-            $sql = 'SELECT * FROM trip_app WHERE destination = :destination AND evaluation = :evaluation AND companion = :companion';
+            $sql = 'SELECT * FROM trip_app WHERE destination LIKE :destination AND evaluation = :evaluation AND companion = :companion';
             $stmt = $dbh->prepare($sql);
             $stmt->bindValue(':destination', $destination, \PDO::PARAM_STR);
             $stmt->bindValue(':evaluation', $evaluation, \PDO::PARAM_INT);

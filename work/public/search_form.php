@@ -1,3 +1,9 @@
+<?php
+require_once('../app/Utils.php');
+use Trip\Utils;
+
+$regions = Utils::getRegions();
+?>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -18,6 +24,7 @@
         <div class="selecter">
           <label for="evaluation">評価</label>
           <select name="evaluation" id="evaluation">
+            <option value="">全て</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -26,17 +33,26 @@
           </select>
           <label for="companion">誰と</label>
           <select name="companion" id="companion">
+            <option value="">全て</option>
             <option value="1">ひとり</option>
             <option value="2">友人</option>
             <option value="3">恋人・パートナー</option>
             <option value="4">家族</option>
           </select>
+          <label for="tripDate">旅行日(入力も可)</label>
+          <input name="tripDate" id="tripDate" type="date" />
+          <label for="region">地域</label>
+          <select name="region" id="region">
+            <?php for($i = 0; $i <= 46; $i++): ?>
+              <option value="<?= $i + 1 ?>"><?= $regions[$i] ?></option>
+            <?php endfor; ?>
+          </select>
         </div>
-        <br>
-        <br>
+        <br />
+        <br />
         <input type="submit" value="検索" />
       </form>
-
     </main>
+    <?php include("../app/footer.html"); ?>
   </body>
 </html>
