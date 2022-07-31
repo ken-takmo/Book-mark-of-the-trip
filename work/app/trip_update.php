@@ -1,7 +1,9 @@
 <?php
-    require_once('Database.php');
+    require_once __DIR__ . "/config.php";
 
     use Trip\Database;
+
+    $pdo = Database::getInstance();
 
     $trip = $_POST;
 
@@ -29,8 +31,7 @@
         exit('地域を選択してください');
     }
 
-    $dbh = Database::dbConnect();
-    $dbh->beginTransaction();
+    $pdo->beginTransaction();
     $sql = 'UPDATE  
                 trip_app SET 
                 destination = :destination, 
@@ -43,7 +44,7 @@
             WHERE 
                 id = :id';
     try{
-        $stmt = $dbh->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':destination', $trip['destination'], \PDO::PARAM_STR);
         $stmt->bindValue(':theme', $trip['theme'], PDO::PARAM_STR);
         $stmt->bindValue(':content', $trip['content'], \PDO::PARAM_STR);
@@ -53,10 +54,10 @@
         $stmt->bindValue(':region', $trip['region'], \PDO::PARAM_INT);
         $stmt->bindValue(':id', $trip['id'], \PDO::PARAM_INT);
         $stmt->execute();
-        $dbh->commit();
+        $pdo->commit();
         echo '更新されました';
     }catch(PDOException $e){
-        $dbh->rollBack();
+        $pdo->rollBack();
         exit($e);
     }
     ?>

@@ -1,9 +1,10 @@
 <?php
 
-    require_once("Database.php");
+    require_once __DIR__ . "/config.php";
 
     use Trip\Database;
 
+    $pdo = Database::getInstance();
     $trips = $_POST; 
 
     if(empty($trips['destination'])){
@@ -30,14 +31,13 @@
         exit('地域を選択してください');
     }
 
-    $dbh = Database::dbConnect();
-    $dbh->beginTransaction();
+    $pdo->beginTransaction();
     $sql = 'INSERT INTO 
                 trip_app(destination, theme, content, evaluation, companion, tripDate, region)
             VALUES
                 (:destination, :theme, :content, :evaluation, :companion, :tripDate, :region)';
     try{
-        $stmt = $dbh->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':destination', $trips['destination'], PDO::PARAM_STR);
         $stmt->bindValue(':theme', $trips['theme'], PDO::PARAM_STR);
         $stmt->bindValue(':content', $trips['content'], PDO::PARAM_STR);
@@ -46,10 +46,10 @@
         $stmt->bindValue(':tripDate', $trips['tripDate'], PDO::PARAM_STR);
         $stmt->bindValue(':region', $trips['region'], PDO::PARAM_INT);
         $stmt->execute();
-        $dbh->commit();
+        $pdo->commit();
         echo '投稿されました';
     }catch(PDOException $e){
-        $dbh->rollBack();
+        $pdo->rollBack();
         exit($e);
     }
 ?>
