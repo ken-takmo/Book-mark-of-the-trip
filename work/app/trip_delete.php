@@ -1,8 +1,14 @@
 <?php
 
-    require_once('functions.php');
+    require_once __DIR__ . "/config.php";
+
+    use Trip\Database;
     use Trip\Functions;
-    Functions::deleteTrip($_GET['id']);
+
+    $pdo = Database::getInstance();
+    $func = new Functions($pdo);
+
+    $func->deleteTrip($_GET['id']);
     
 ?>
 <br>

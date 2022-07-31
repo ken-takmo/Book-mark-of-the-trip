@@ -7,20 +7,23 @@
 
     class Functions
     {   
-        public static function getAll() {
-            $dbh = Database::dbConnect();
-            $stmt = $dbh->query("SELECT * FROM trip_app");
+        private $pdo;
+        public function __construct($pdo){
+            $this->pdo = $pdo;
+        }
+
+        public function getAll() {
+            $stmt = $this->pdo->query("SELECT * FROM trip_app");
             $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }
 
-        public static function getDetail($id) {
+        public function getDetail($id) {
             if(empty($id)) {
                 echo "IDが不正です";
                 exit();
             }
-            $dbh = Database::dbConnect();
-            $stmt = $dbh->prepare("SELECT * FROM trip_app WHERE id = :id");
+            $stmt = $this->pdo->prepare("SELECT * FROM trip_app WHERE id = :id");
             $stmt->bindValue(':id', (int)$id, \PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -32,29 +35,27 @@
             return $result;
         }
 
-        public static function deleteTrip($id) {
+        public function deleteTrip($id) {
             if(empty($id)) {
                 echo "IDが不正です";
             }
-            $dbh = Database::dbConnect();
-            $dbh->beginTransaction();
+            $this->pdo->beginTransaction();
             $sql = 'DELETE FROM trip_app WHERE id = :id';
             try{
-                $stmt = $dbh->prepare($sql);
+                $stmt = $this->pdo->prepare($sql);
                 $stmt->bindValue(':id', (int)$id, \PDO::PARAM_INT);
                 $stmt->execute();
-                $dbh->commit();
+                $this->pdo->commit();
                 echo '削除されました';
             }catch(PDOException $e){
-                $dbh->rollBack();
+                $this->pdo->rollBack();
                 exit($e);
             }
         }
 
-        public static function searchTrip($destination, $evaluation, $companion) {
-            $dbh = Database::dbConnect();
+        public function searchTrip($destination, $evaluation, $companion) {
             $sql = 'SELECT * FROM trip_app WHERE destination LIKE :destination AND evaluation = :evaluation AND companion = :companion';
-            $stmt = $dbh->prepare($sql);
+            $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':destination', $destination, \PDO::PARAM_STR);
             $stmt->bindValue(':evaluation', $evaluation, \PDO::PARAM_INT);
             $stmt->bindValue(':companion', $companion, \PDO::PARAM_INT);
@@ -67,7 +68,7 @@
             return $result;
         }
 
-        public static function setCompanion($int){
+        public function setCompanion($int){
             switch($int){
                 case 1:
                     return "ひとり";
