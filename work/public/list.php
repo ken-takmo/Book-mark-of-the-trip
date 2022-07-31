@@ -1,9 +1,16 @@
 <?php
-    require_once('../app/functions.php');
-    require_once('../app/Utils.php');
+    // require_once('../app/functions.php');
+    // require_once('../app/Utils.php'); 
+    require_once __DIR__ . "/../app/config.php";
+
     use Trip\Functions;
     use Trip\Utils;
-    $trips = Functions::getAll();
+    use Trip\Database;
+
+    $pdo = Database::getInstance();
+
+    $func = new Functions($pdo);
+    $trips = $func->getAll();
     $regions = Utils::getRegions();
 ?>
 <!DOCTYPE html>
@@ -52,7 +59,7 @@
                 <small>評価</small>
                 <p class="detail"><?= $trip['evaluation'] ?></p>
                 <small>誰と</small>
-                <p class="detail"><?= Functions::setCompanion($trip['companion']) ?></p>
+                <p class="detail"><?= $func->setCompanion($trip['companion']) ?></p>
                 <small>地域</small>
                 <p class="detail"><?= $regions[$trip['region'] - 1] ?></p>
             </div>

@@ -1,13 +1,15 @@
 <?php
-    require_once('../app/functions.php');
-    require_once('../app/Utils.php');
+    require_once __DIR__ . "/../app/config.php";
 
     use Trip\Utils;
     use Trip\Functions;
+    use Trip\Database;
 
+    $pdo = Database::getInstance();
     $regions = Utils::getRegions();
+    $func = new Functions($pdo);
 
-    $trip = Functions::getDetail($_GET['id']);
+    $trip = $func->getDetail($_GET['id']);
     $id = $trip['id'];
     $destination = $trip['destination'];
     $theme = $trip['theme'];

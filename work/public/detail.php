@@ -1,8 +1,13 @@
 <?php
-    require_once('../app/functions.php');
-    require_once('../app/Utils.php');
+    // require_once('../app/functions.php');
+    // require_once('../app/Utils.php');
+    require_once __DIR__ . "/../app/config.php";
+    use Trip\Database;
     use Trip\Utils;
     use Trip\Functions;
+
+    $pdo = Database::getInstance();
+    $func = new Functions($pdo);
 
     $regions = Utils::getRegions();
     if(empty($_GET["id"])){
@@ -11,7 +16,7 @@
         // header("Location:/");
         exit();
     }
-    $trip = Functions::getDetail($_GET["id"]);
+    $trip = $func->getDetail($_GET["id"]);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -38,7 +43,7 @@
             <hr>
             <div class="detail-data-detail">
                 <p>評価：<?= $trip['evaluation'] ?></p>
-                <p>誰と：<?= Functions::setCompanion($trip['companion']) ?></p>
+                <p>誰と：<?= $func->setCompanion($trip['companion']) ?></p>
                 <p>旅行日：<?= $trip['tripDate'] ?></p>
                 <p>地域：<?= $regions[$trip['region'] -1] ?></p>
             </div>

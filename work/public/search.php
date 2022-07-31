@@ -1,11 +1,14 @@
 <?php
 
-require_once('../app/functions.php');
-require_once('../app/Utils.php');
+require_once __DIR__ . "/../app/config.php";
 use Trip\Utils;
 use Trip\Functions;
+use Trip\Database;
 
+$pdo = Database::getInstance();
+$func = new Functions($pdo);
 $regions = Utils::getRegions();
+
 $requirement = $_POST;
 
 $destination = '%' . $requirement['destination'] . '%';
@@ -14,7 +17,7 @@ $companion = $requirement['companion'];
 $tripDate = $requirement['tripDate'];
 $region = $requirement['region'];
 
-$results = Functions::searchTrip($destination, $evaluation, $companion,);
+$results = $func->searchTrip($destination, $evaluation, $companion,);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -28,7 +31,7 @@ $results = Functions::searchTrip($destination, $evaluation, $companion,);
 <body>
     <?php include("../app/header.php"); ?>
     <H1>検索結果</H1>
-    <p><?= str_replace('%', '', $destination) . " " . $evaluation . " "  . Functions::setCompanion($companion) ?> で検索</p>
+    <p><?= str_replace('%', '', $destination) . " " . $evaluation . " "  . $func->setCompanion($companion) ?> で検索</p>
     <hr>
     <main>
 
@@ -47,7 +50,7 @@ $results = Functions::searchTrip($destination, $evaluation, $companion,);
                     <small>評価</small>
                     <p class="detail"><?= $result['evaluation'] ?></p>
                     <small>誰と</small>
-                    <p class="detail"><?= Functions::setCompanion($result['companion']) ?></p>
+                    <p class="detail"><?= $func->setCompanion($result['companion']) ?></p>
                     <small>地域</small>
                     <p class="detail"><?= $regions[$result['region'] - 1] ?></p>
                 </div>
