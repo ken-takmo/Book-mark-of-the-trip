@@ -53,12 +53,17 @@
             }
         }
 
-        public function searchTrip($destination, $evaluation, $companion) {
-            $sql = 'SELECT * FROM trip_app WHERE destination LIKE :destination AND evaluation = :evaluation AND companion = :companion';
+        public function searchTrip($destination, $evaluation, $companion, $region) {
+            $sql = 'SELECT * FROM trip_app 
+            WHERE destination LIKE :destination 
+            AND evaluation = :evaluation 
+            AND companion = :companion 
+            AND region = :region';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':destination', $destination, \PDO::PARAM_STR);
             $stmt->bindValue(':evaluation', $evaluation, \PDO::PARAM_INT);
             $stmt->bindValue(':companion', $companion, \PDO::PARAM_INT);
+            $stmt->bindValue(':region', $region, \PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
