@@ -14,10 +14,9 @@ $requirement = $_POST;
 $destination = '%' . $requirement['destination'] . '%';
 $evaluation = $requirement['evaluation'];
 $companion = $requirement['companion'];
-$tripDate = $requirement['tripDate'];
 $region = $requirement['region'];
 
-$results = $func->searchTrip($destination, $evaluation, $companion,);
+$results = $func->searchTrip($destination, $evaluation, $companion, $region);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -31,7 +30,7 @@ $results = $func->searchTrip($destination, $evaluation, $companion,);
 <body>
     <?php include("../app/header.php"); ?>
     <H1>検索結果</H1>
-    <p><?= str_replace('%', '', $destination) . " " . $evaluation . " "  . $func->setCompanion($companion) ?> で検索</p>
+    <p><?= "旅行先：　" . str_replace('%', '', $destination) . "　評価：　" . $evaluation . "　誰と：　"  . $func->setCompanion($companion) . "　地域：　" . $regions[$region - 1]?> で検索</p>
     <hr>
     <main>
 
@@ -57,8 +56,8 @@ $results = $func->searchTrip($destination, $evaluation, $companion,);
             </div>
             <?php endforeach; ?>
         </div>
-        <?php include("../app/footer.html"); ?>
     </main>
+    <?php include("../app/footer.html"); ?>
     <script>
         const toDetail = (id) => {
             location.href = `./detail.php?id=${id}`;

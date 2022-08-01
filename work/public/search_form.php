@@ -19,12 +19,12 @@ $regions = Utils::getRegions();
       <h1>検索フォーム</h1>
       <form action="./search.php" method="POST">
         <label for="destination">旅行先</label>
-        <input type="text" name="destination" id="destination"/>
+        <input type="text" name="destination" id="destination" />
         <br>
         <div class="selecter">
           <label for="evaluation">評価</label>
           <select name="evaluation" id="evaluation">
-            <option value="">全て</option>
+            <option value="all">全て</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -33,16 +33,15 @@ $regions = Utils::getRegions();
           </select>
           <label for="companion">誰と</label>
           <select name="companion" id="companion">
-            <option value="">全て</option>
+            <option value="all">全て</option>
             <option value="1">ひとり</option>
             <option value="2">友人</option>
             <option value="3">恋人・パートナー</option>
             <option value="4">家族</option>
           </select>
-          <label for="tripDate">旅行日(入力も可)</label>
-          <input name="tripDate" id="tripDate" type="date" />
           <label for="region">地域</label>
           <select name="region" id="region">
+            <option value="all">全て</option>
             <?php for($i = 0; $i <= 46; $i++): ?>
               <option value="<?= $i + 1 ?>"><?= $regions[$i] ?></option>
             <?php endfor; ?>
