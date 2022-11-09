@@ -17,7 +17,7 @@
     <?php include("../app/header.php"); ?>
     <main class="post-form">
       <h1>投稿フォーム</h1>
-      <form action="../app/trip_create.php" method="POST">
+      <form id= "form" onsubmit="return false">
         <label for="destination">旅行先</label>
         <input type="text" name="destination" id="destination" placeholder="例：梅田"/>
         <br>
@@ -54,9 +54,10 @@
         </div>
         <br />
         <br />
-        <input type="submit" value="投稿" />
+        <button type="button">投稿</button>
       </form>
     </main>
     <?php include("../app/footer.html"); ?>
+    <script src="./postTrip.js"></script>
   </body>
 </html>
